@@ -1,11 +1,10 @@
 "use client";
 import * as z from 'zod';
-// import { createThread } from "@/lib/actions/thread.actions";
 import { CommentValidation } from "@/lib/validations/thread";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePathname, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel} from "../ui/form";
 import { Button } from "../ui/button";
 import { Input } from '../ui/input';
 import Image from 'next/image';
@@ -39,7 +38,7 @@ const Comment = ({
     form.reset();
 
   };
-  
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="comment-form">
