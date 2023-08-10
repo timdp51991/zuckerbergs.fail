@@ -9,6 +9,7 @@ import User from "../models/user.model";
 
 import { connectToDB } from "../mongoose";
 
+//Fetch user details
 export async function fetchUser(userId: string) {
   try {
     connectToDB();
@@ -30,7 +31,7 @@ interface Params {
   image: string;
   path: string;
 }
-
+// Update user details
 export async function updateUser({
   userId,
   bio,

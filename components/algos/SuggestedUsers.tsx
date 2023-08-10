@@ -1,20 +1,10 @@
-import React from 'react'
+//render the suggested users using the suggestUsers function based on common communities
 
-const SuggestedUsers = () => {
+export default function SuggestedUsers() {
   return (
-    <div>
-        SuggestedUsers
-        <h1>Put Algo Here</h1>
-        <div>
-        User 1
-        --
-        --
-        --
-        -- 
-        </div>
-
+    <div className="suggested-users">
+      <h3>Suggested Users</h3>
+      
     </div>
-  )
-}
-
-export default SuggestedUsers
+  );
+};

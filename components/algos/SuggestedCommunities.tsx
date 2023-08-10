@@ -1,19 +1,25 @@
-import React from 'react'
+"use client";
 
-const SuggestedCommunities = () => {
+
+
+//render the suggested communities using the suggestCommunities function
+export default function SuggestedCommunities() {
+  
+
   return (
-    <div>
-        SuggestedCommunities
-        <h1>Put Algo Here</h1>
-        <div>
-        --
-        --
-        --
-        --
-        -- 
-        </div>
-    </div>
-  )
-}
+    <div className="suggested-communities">
+      <h3>Suggested Communities</h3>
+      
 
-export default SuggestedCommunities
+      
+    </div>
+  );
+};
+
+
+
+
+
+
+
+
