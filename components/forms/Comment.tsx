@@ -1,6 +1,5 @@
 "use client";
 import * as z from 'zod';
-import { CommentValidation } from "@/lib/validations/thread";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePathname, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -8,6 +7,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel} from "../ui/form";
 import { Button } from "../ui/button";
 import { Input } from '../ui/input';
 import Image from 'next/image';
+
+import { CommentValidation } from "@/lib/validations/thread";
 import { addCommentToThread } from '@/lib/actions/thread.actions';
 
 interface Props {
@@ -22,16 +23,22 @@ const Comment = ({
   currentUserId,
   currentUserImg
 }:Props) => {
-  const router = useRouter();
   const pathname = usePathname();
 
-  const form = useForm({
-        resolver: zodResolver(CommentValidation),
-        defaultValues: {
-            thread: "",
+  // const form = useForm({
+  //       resolver: zodResolver(CommentValidation),
+  //       defaultValues: {
+  //           thread: "",
             
-        }
-    });
+  //       }
+  //   });
+  const form = useForm<z.infer<typeof CommentValidation>>({
+    resolver: zodResolver(CommentValidation),
+    defaultValues: {
+      thread: "",
+    },
+  });
+
   const onSubmit = async (values: z.infer<typeof CommentValidation>) => {
     await addCommentToThread(threadId, values.thread, JSON.parse(currentUserId), pathname);
 
@@ -50,10 +57,11 @@ const Comment = ({
           <FormLabel>
             <Image
               src={currentUserImg}
-              alt='Profile image'
+              alt='current image'
               width={48}
               height={48}
-              className='rounded-full object-cover' />
+              className='rounded-full object-cover'
+            />
           </FormLabel>
           <FormControl className="border-none bg-transparent">
             <Input
